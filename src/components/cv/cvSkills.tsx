@@ -1,7 +1,7 @@
 import CVSectionTitle from "./cvSectionTitle";
 import CVSkillCategory from "./cvSkillCategory";
 
-export default function Skills() {
+export default function CVSkills() {
     return (
         <>
             <CVSectionTitle title="skills"></CVSectionTitle>

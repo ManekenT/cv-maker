@@ -7,12 +7,14 @@ export default function TextInput({
     description,
     type,
     inputMode,
+    value,
 }: {
     onChange: (text: string) => void;
     label: string;
     description?: string;
     type?: HTMLInputTypeAttribute;
     inputMode?: "email" | "search" | "tel" | "text" | "url" | "none" | "numeric" | "decimal";
+    value?: string;
 }) {
     return (
         <div className="w-full max-w-md">
@@ -20,7 +22,8 @@ export default function TextInput({
                 <Label className="ml-2 text-sm font-medium text-gray-500">{label}</Label>
                 {description && <Description className="text-sm text-black/60">{description}</Description>}
                 <Input
-                    onChange={(event) => onChange(event.target.value)}
+                    value={value}
+                    onChange={(e) => onChange(e.target.value)}
                     className="block w-full rounded-lg border-none bg-indigo-100 py-1.5 px-3 text-sm/6 "
                     name="full_name"
                     type={type}
