@@ -3,12 +3,12 @@ import { Archivo_Narrow, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import { ConvexClientProvider } from "./ConvexClientProvider";
 
-export const title = Archivo_Narrow({
+const title = Archivo_Narrow({
     variable: "--font-title",
     subsets: ["latin"],
 });
 
-export const text = Source_Sans_3({
+const text = Source_Sans_3({
     variable: "--font-text",
     subsets: ["latin"],
 });

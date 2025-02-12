@@ -1,17 +1,12 @@
 import { UserButton } from "@clerk/clerk-react";
 import { PrinterIcon } from "@heroicons/react/20/solid";
-import { useMutation, useQuery } from "convex/react";
+import { useMutation } from "convex/react";
 import { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import { api } from "../convex/_generated/api";
-import CVEducation from "./components/cv/cvEducation";
-import CVExperience from "./components/cv/cvExperience";
 import CVGeneralInfo from "./components/cv/cvGeneralInfo";
 import CVSectionTitle from "./components/cv/cvSectionTitle";
-import Education from "./components/education";
 import GeneralInfoInput from "./components/generalInfo";
-import { text, title } from "./app/layout";
-import CVSkills from "./components/cv/cvSkills";
 
 export default function CVPage() {
     console.log("test");
@@ -44,10 +39,7 @@ export default function CVPage() {
                         <Education /> */}
                     </div>
                     <div className="border border-gray-200 rounded-md mt-4 max-w-3xl w-3xl shadow-xl">
-                        <div
-                            className={`p-8 ${title.variable} ${text.variable} font-text antialiased`}
-                            ref={contentRef}
-                        >
+                        <div className={`p-8 font-text antialiased`} ref={contentRef}>
                             <CVGeneralInfo></CVGeneralInfo>
                             {/* <CVEducation />
                             <CVExperience />
