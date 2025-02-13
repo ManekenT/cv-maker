@@ -9,10 +9,8 @@
         "lint": "next lint"
     },
     "dependencies": {
-        "@clerk/clerk-react": "^5.22.12",
         "@headlessui/react": "^2.2.0",
         "@heroicons/react": "^2.2.0",
-        "convex": "^1.19.1",
         "next": "15.1.7",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",

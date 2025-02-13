@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Archivo_Narrow, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
-import { ConvexClientProvider } from "./ConvexClientProvider";
 
 const title = Archivo_Narrow({
     variable: "--font-title",
@@ -26,9 +25,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${title.variable} ${text.variable} font-text antialiased`}>
-                <ConvexClientProvider>{children}</ConvexClientProvider>
-            </body>
+            <body className={`${title.variable} ${text.variable} font-text antialiased`}>{children}</body>
         </html>
     );
 }

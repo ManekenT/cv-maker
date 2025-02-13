@@ -4,7 +4,3 @@
     --font-title: var(--font-title);
     --font-text: var(--font-text);
 }
-
-@theme {
-    --default-font-family: "Trebuchet MS";
-}
