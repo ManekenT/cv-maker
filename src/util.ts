@@ -1,4 +1,4 @@
-import { GeneralInfo } from "./types";
+import { CV } from "./types";
 
 export function formatDate(date: string) {
     if (date.length === 0) {
@@ -8,9 +8,9 @@ export function formatDate(date: string) {
     return dateObj.toLocaleDateString(undefined, { month: "long", year: "numeric" });
 }
 
-export function saveJsonObjToFile(obj: unknown) {
+export function saveJsonObjToFile(cv: CV) {
     // file setting
-    const text = JSON.stringify(obj);
+    const text = JSON.stringify(cv);
     const name = "sample.json";
     const type = "text/plain";
 
@@ -24,7 +24,7 @@ export function saveJsonObjToFile(obj: unknown) {
     a.remove();
 }
 
-export function loadFile(onLoad: (file: GeneralInfo) => void) {
+export function loadFile(onLoad: (cv: CV) => void) {
     const input = document.createElement("input");
     input.type = "file";
 

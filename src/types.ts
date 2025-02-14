@@ -1,3 +1,8 @@
+export type CV = {
+    info: GeneralInfo;
+    education: Education;
+};
+
 export type GeneralInfo = {
     name: string;
     tel: string;

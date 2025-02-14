@@ -53,14 +53,19 @@ export default function Home() {
                     <div className="flex gap-4">
                         <button
                             className="flex items-center justify-center gap-2 text-indigo-600 border border-indigo-500 hover:cursor-pointer hover:bg-indigo-400 p-2 px-4 rounded-md"
-                            onClick={() => saveJsonObjToFile(generalInfo)}
+                            onClick={() => saveJsonObjToFile({ info: generalInfo, education: education })}
                         >
                             <ArrowUpOnSquareIcon className="size-5"></ArrowUpOnSquareIcon>
                             <span>save</span>
                         </button>
                         <button
                             className="flex items-center justify-center gap-2 text-indigo-600 border border-indigo-500 hover:cursor-pointer hover:bg-indigo-400 p-2 px-4 rounded-md"
-                            onClick={() => loadFile((e) => setInfo(e))}
+                            onClick={() =>
+                                loadFile((cv) => {
+                                    setInfo(cv.info);
+                                    setEducation(cv.education);
+                                })
+                            }
                         >
                             <ArrowDownOnSquareIcon className="size-5"></ArrowDownOnSquareIcon>
                             <span>load</span>
