@@ -5,18 +5,20 @@ export type GeneralInfo = {
 };
 
 export type EducationStep = {
-    name: string;
-    from: Date;
-    to?: Date;
-    degree: string;
+    degree_name: string;
+    from_date: string;
+    to_date?: string;
+    institution_name: string;
 };
 
+export type Education = EducationStep[];
+
 export type ExperienceStep = {
-    name: string;
-    employer: string;
-    from: Date;
-    to?: Date;
-    listOfTasks: string[];
+    job_title: string;
+    employer_name: string;
+    from_date: string;
+    to_date?: string;
+    tasklist: string[];
 };
 
 export type Skill = {

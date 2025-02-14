@@ -1,7 +1,11 @@
 import { GeneralInfo } from "./types";
 
-export function formatDate(date: Date) {
-    return date.toLocaleDateString(undefined, { month: "long", year: "numeric" });
+export function formatDate(date: string) {
+    if (date.length === 0) {
+        return "N/A";
+    }
+    const dateObj = new Date(date);
+    return dateObj.toLocaleDateString(undefined, { month: "long", year: "numeric" });
 }
 
 export function saveJsonObjToFile(obj: unknown) {

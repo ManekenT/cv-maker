@@ -1,31 +1,46 @@
 "use client";
 
+import CVEducation from "@/components/cv/cvEducation";
 import CVGeneralInfo from "@/components/cv/cvGeneralInfo";
 import CVSectionTitle from "@/components/cv/cvSectionTitle";
-import GeneralInfoInput from "@/components/generalInfo";
-import { GeneralInfo } from "@/types";
+import EducationInput from "@/components/input/educationInput";
+import GeneralInfoInput from "@/components/input/generalInfoInput";
+import { Education, GeneralInfo } from "@/types";
 import { loadFile, saveJsonObjToFile } from "@/util";
 import { PrinterIcon, ArrowUpOnSquareIcon, ArrowDownOnSquareIcon } from "@heroicons/react/20/solid";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 
 const generalInfoKey = "generalInfo";
+const educationKey = "education";
 
 export default function Home() {
-    const [generalInfo, setGeneralInfo] = useState<GeneralInfo>({ name: "", email: "", tel: "" });
+    const [generalInfo, setGeneralInfoState] = useState<GeneralInfo>({ name: "", email: "", tel: "" });
+    const [education, setEducationState] = useState<Education>([]);
     const setInfo = useCallback(
         (info: GeneralInfo) => {
-            setGeneralInfo(info);
+            setGeneralInfoState(info);
             localStorage.setItem(generalInfoKey, JSON.stringify(info));
         },
-        [setGeneralInfo]
+        [setGeneralInfoState]
+    );
+
+    const setEducation = useCallback(
+        (education: Education) => {
+            setEducationState(education);
+            localStorage.setItem(educationKey, JSON.stringify(education));
+        },
+        [setEducationState]
     );
 
     useEffect(() => {
         const savedInfoString = localStorage.getItem(generalInfoKey);
+        const savedEducationString = localStorage.getItem(educationKey);
         const savedInfo = savedInfoString === null ? { name: "", email: "", tel: "" } : JSON.parse(savedInfoString);
+        const savedEducation = savedEducationString === null ? [] : JSON.parse(savedEducationString);
         setInfo(savedInfo);
-    }, [setInfo]);
+        setEducation(savedEducation);
+    }, [setInfo, setEducation]);
 
     const contentRef = useRef<HTMLDivElement>(null);
     const reactToPrintFn = useReactToPrint({ contentRef });
@@ -63,13 +78,14 @@ export default function Home() {
                     <div className="w-96">
                         <CVSectionTitle title="General Info" />
                         <GeneralInfoInput generalInfo={generalInfo} onChange={setInfo}></GeneralInfoInput>
-                        {/* <CVSectionTitle title="education" />
-                        <Education /> */}
+                        <CVSectionTitle title="Education" />
+                        <EducationInput education={education} onChange={setEducation}></EducationInput>
                     </div>
                     <div className="border border-gray-200 rounded-md mt-4 max-w-3xl w-3xl shadow-xl">
                         <div className={`p-8 font-text antialiased`} ref={contentRef}>
                             <CVGeneralInfo generalInfo={generalInfo}></CVGeneralInfo>
-                            {/* <CVEducation /> */}
+                            <CVSectionTitle title="education" />
+                            <CVEducation education={education}></CVEducation>
                             {/* <CVExperience /> */}
                             {/* <CVSkills /> */}
                         </div>

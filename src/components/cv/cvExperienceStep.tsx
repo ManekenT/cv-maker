@@ -4,13 +4,14 @@ import { formatDate } from "@/util";
 export default function CVExperienceStep({ step }: { step: ExperienceStep }) {
     return (
         <div className="py-1">
-            <span className="font-semibold">{step.name}</span> <span className="text-gray-600">- {step.employer}</span>
+            <span className="font-semibold">{step.job_title}</span>{" "}
+            <span className="text-gray-600">- {step.employer_name}</span>
             <div className="text-gray-600">
-                {formatDate(step.from)} - {step.to ? formatDate(step.to) : "Present"}
+                {formatDate(step.from_date)} - {step.to_date ? formatDate(step.to_date) : "Present"}
             </div>
             <div>
                 <ul className="list-disc list-inside">
-                    {step.listOfTasks.map((task, index) => (
+                    {step.tasklist.map((task, index) => (
                         <li key={index}>{task}</li>
                     ))}
                 </ul>
