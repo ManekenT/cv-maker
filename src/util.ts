@@ -1,14 +1,14 @@
 import { CV } from "./types";
 
-export function formatDate(date: string) {
-    if (date.length === 0) {
+export function formatDate(date: Date) {
+    if (date === undefined) {
         return "N/A";
     }
-    const dateObj = new Date(date);
-    return dateObj.toLocaleDateString(undefined, { month: "long", year: "numeric" });
+    console.log(date);
+    return new Date(date).toLocaleDateString(undefined, { month: "long", year: "numeric" });
 }
 
-export function saveJsonObjToFile(cv: CV) {
+export function saveFile(cv: CV) {
     // file setting
     const text = JSON.stringify(cv);
     const name = "sample.json";

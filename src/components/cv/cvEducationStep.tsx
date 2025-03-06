@@ -8,7 +8,8 @@ export default function CVEducationStep({ step }: { step: EducationStep }) {
             <span className="font-semibold">{step.degree_name}</span>{" "}
             <span className="text-gray-600">- {step.institution_name}</span>
             <div className="text-gray-600">
-                {formatDate(step.from_date)} - {step.to_date ? formatDate(step.to_date) : "Present"}
+                {step.from_date ? formatDate(step.from_date) : ""} -{" "}
+                {step.to_date ? formatDate(step.to_date) : "Present"}
             </div>
         </div>
     );

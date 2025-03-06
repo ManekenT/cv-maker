@@ -1,5 +1,7 @@
 import { GeneralInfo } from "@/types";
-import TextInput from "../TextInput";
+import { InputWithLabel } from "../ui/inputWithLabel";
+import { Label } from "../ui/label";
+import { Input } from "../ui/input";
 
 export default function GeneralInfoInput({
     generalInfo,
@@ -10,26 +12,32 @@ export default function GeneralInfoInput({
 }) {
     return (
         <div className="flex flex-col gap-2">
-            <TextInput
-                value={generalInfo.name}
-                onChange={(name) => onChange({ ...generalInfo, name })}
-                label="name"
-            ></TextInput>
+            <InputWithLabel>
+                <Label>name</Label>
+                <Input
+                    value={generalInfo.name}
+                    onChange={(name) => onChange({ ...generalInfo, name: name.currentTarget.value })}
+                ></Input>
+            </InputWithLabel>
             <div className="flex gap-2">
-                <TextInput
-                    value={generalInfo.tel}
-                    onChange={(tel) => onChange({ ...generalInfo, tel })}
-                    label="phone"
-                    type="tel"
-                    inputMode="tel"
-                ></TextInput>
-                <TextInput
-                    value={generalInfo.email}
-                    onChange={(email) => onChange({ ...generalInfo, email })}
-                    label="email"
-                    type="email"
-                    inputMode="email"
-                ></TextInput>
+                <InputWithLabel>
+                    <Label>phone</Label>
+                    <Input
+                        value={generalInfo.tel}
+                        onChange={(tel) => onChange({ ...generalInfo, tel: tel.currentTarget.value })}
+                        type="tel"
+                        inputMode="tel"
+                    ></Input>
+                </InputWithLabel>
+                <InputWithLabel>
+                    <Label>email</Label>
+                    <Input
+                        value={generalInfo.email}
+                        onChange={(email) => onChange({ ...generalInfo, email: email.currentTarget.value })}
+                        type="email"
+                        inputMode="email"
+                    ></Input>
+                </InputWithLabel>
             </div>
         </div>
     );

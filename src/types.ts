@@ -1,6 +1,7 @@
 export type CV = {
     info: GeneralInfo;
     education: Education;
+    experience: Experience;
 };
 
 export type GeneralInfo = {
@@ -9,20 +10,22 @@ export type GeneralInfo = {
     email: string;
 };
 
+export type Education = EducationStep[];
+
 export type EducationStep = {
     degree_name: string;
-    from_date: string;
-    to_date?: string;
+    from_date?: Date;
+    to_date?: Date;
     institution_name: string;
 };
 
-export type Education = EducationStep[];
+export type Experience = ExperienceStep[];
 
 export type ExperienceStep = {
     job_title: string;
     employer_name: string;
-    from_date: string;
-    to_date?: string;
+    from_date?: Date;
+    to_date?: Date;
     tasklist: string[];
 };
 
